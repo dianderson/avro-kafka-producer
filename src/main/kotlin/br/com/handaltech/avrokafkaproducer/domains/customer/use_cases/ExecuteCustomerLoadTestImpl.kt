@@ -1,4 +1,4 @@
-package br.com.handaltech.avrokafkaproducer.domains.customer.usecases
+package br.com.handaltech.avrokafkaproducer.domains.customer.use_cases
 
 import br.com.handaltech.avrokafkaproducer.domains.customer.models.CustomerLoadTestModel
 import br.com.handaltech.avrokafkaproducer.domains.customer.models.CustomerModel
