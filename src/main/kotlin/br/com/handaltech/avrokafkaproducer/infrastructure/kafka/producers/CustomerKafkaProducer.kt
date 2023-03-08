@@ -3,6 +3,7 @@ package br.com.handaltech.avrokafkaproducer.infrastructure.kafka.producers
 import br.com.handaltech.avrokafkaproducer.avros.CustomerAvro
 import br.com.handaltech.avrokafkaproducer.infrastructure.kafka.config.KafkaConfigProperties
 import br.com.handaltech.avrokafkaproducer.infrastructure.kafka.models.CustomerDataModel
+import br.com.handaltech.avrokafkaproducer.infrastructure.kafka.resources.CustomerPublisher
 import org.apache.logging.log4j.LogManager
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.kafka.support.KafkaHeaders
@@ -15,10 +16,10 @@ import java.time.LocalDate
 class CustomerKafkaProducer(
     private val kafkaConfigProperties: KafkaConfigProperties,
     private val kafkaTemplate: KafkaTemplate<String, Any>
-) {
+) : CustomerPublisher {
     private val logger = LogManager.getLogger(CustomerKafkaProducer::class.java)
     private val topicConfig = kafkaConfigProperties.getTopicByName("customer")
-    fun publisher(customerDataModel: CustomerDataModel) {
+    override fun publish(customerDataModel: CustomerDataModel) {
         customerDataModel.convertToAvro()
             .buildMessageWithPayload()
             .publicWithCallback()

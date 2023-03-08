@@ -1,6 +1,6 @@
-package br.com.handaltech.avrokafkaproducer.infrastructure.kafka.models
+package br.com.handaltech.avrokafkaproducer.domains.customer.models
 
-data class CustomerDataModel(
+data class CustomerModel(
     val customerCode: String,
     val customerName: String,
     val customerDocument: String,

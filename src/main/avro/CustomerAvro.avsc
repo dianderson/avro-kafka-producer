@@ -15,7 +15,7 @@
     },
     {
       "name": "customerDocument",
-      "type": "long",
+      "type": "string",
       "doc": "Customer Document - ex: 71640439000127"
     },
     {
