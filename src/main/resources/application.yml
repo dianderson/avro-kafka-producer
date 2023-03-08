@@ -2,14 +2,17 @@ configs:
   kafka:
     topics:
       - #topic 1
-        name: 'topic.transactional.movement.${spring.profiles.active}'
+        name: 'customer.notification.${spring.profiles.active}'
         num-partitions: 1
         replication-factor: 1
+        ttl-in-days: 1
       - #topic 2
         name: 'topic.paymentbook.movement.${spring.profiles.active}'
         num-partitions: 1
         replication-factor: 1
+        ttl-in-days: 1
 #      - #topic 3
 #        name: test_topic_3
 #        num-partitions: 3
 #        replication-factor: 1
+#        ttl-in-days: 1

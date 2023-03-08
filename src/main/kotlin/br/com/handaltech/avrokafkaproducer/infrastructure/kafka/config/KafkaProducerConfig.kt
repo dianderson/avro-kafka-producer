@@ -9,13 +9,12 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.kafka.core.DefaultKafkaProducerFactory
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.kafka.core.ProducerFactory
-import java.util.*
 
 @Configuration
 class KafkaProducerConfig(
     private val kafkaConfigProperties: KafkaConfigProperties
 ) {
-    private fun producerFactory(): ProducerFactory<String, Objects> = hashMapOf<String, Any>()
+    private fun producerFactory(): ProducerFactory<String, Any> = hashMapOf<String, Any>()
         .apply {
             this[ProducerConfig.BOOTSTRAP_SERVERS_CONFIG] = kafkaConfigProperties.bootstrapServers
             this[ProducerConfig.ACKS_CONFIG] = "all"
@@ -29,5 +28,5 @@ class KafkaProducerConfig(
         }.let { DefaultKafkaProducerFactory(it) }
 
     @Bean
-    fun kafkaTemplate(): KafkaTemplate<String, Objects> = KafkaTemplate(producerFactory())
+    fun kafkaTemplate(): KafkaTemplate<String, Any> = KafkaTemplate(producerFactory())
 }

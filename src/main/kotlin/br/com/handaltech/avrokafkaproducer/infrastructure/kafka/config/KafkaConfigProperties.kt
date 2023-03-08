@@ -10,5 +10,7 @@ data class KafkaConfigProperties(
     var schemaRegistryUrl: String = "",
     var topics: List<KafkaTopicsConfigModel> = listOf()
 ) {
-    fun getTopicName(topicName: String): String? = topics.firstOrNull { it.name.contains(topicName) }?.name
+    fun getTopicByName(topicName: String): KafkaTopicsConfigModel =
+        topics.firstOrNull { it.name.contains(topicName) }
+            ?: throw ClassNotFoundException("Properties to topic name $topicName not found")
 }

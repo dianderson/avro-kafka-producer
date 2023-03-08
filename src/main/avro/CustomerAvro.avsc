@@ -1,0 +1,27 @@
+{
+"name": "CustomerAvro",
+"type": "record",
+"namespace": "br.com.handaltech.avrokafkaproducer.avros",
+  "fields": [
+    {
+      "name": "customerCode",
+      "type": "string",
+      "doc": "Customer Random Unique Identifier - ex: 123e4567-e89b-12d3-a456-426655440000"
+    },
+    {
+      "name": "customerName",
+      "type": "string",
+      "doc": "Customer Name - ex: Customer Name"
+    },
+    {
+      "name": "customerDocument",
+      "type": "long",
+      "doc": "Customer Document - ex: 71640439000127"
+    },
+    {
+      "name": "customerMail",
+      "type": "string",
+      "doc": "Customer Mail - ex: mail@customer.com"
+    }
+  ]
+}
