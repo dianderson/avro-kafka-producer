@@ -15,10 +15,11 @@ class ExecuteCustomerLoadTestImpl(
 ) : ExecuteCustomerLoadTest {
     override fun execute(customerLoadTestModel: CustomerLoadTestModel) {
         with(customerLoadTestModel) {
-            repeat((messageQuantity / quantityPerSecond)) {
+            repeat(messageQuantity / quantityPerSecond) {
                 executeAsync(quantityPerSecond, failurePercentage)
                 Thread.sleep(1000L)
             }
+            executeAsync(messageQuantity % quantityPerSecond, failurePercentage)
         }
     }
 
@@ -26,10 +27,19 @@ class ExecuteCustomerLoadTestImpl(
     fun executeAsync(quantityPerSecond: Int, failurePercentage: Int) {
         repeat(quantityPerSecond) {
             customerPort.publishMessage(
-                buildRandomCustomer(getRandomFactor(it, quantityPerSecond, failurePercentage))
+                customerModel = buildMessage(it, quantityPerSecond, failurePercentage)
             )
         }
     }
+
+    private fun buildMessage(current: Int, quantityPerSecond: Int, failurePercentage: Int): CustomerModel =
+        when (val factor = (failurePercentage / 100.0 * quantityPerSecond).toInt()) {
+            0 -> buildRandomCustomer(true)
+
+            else -> (current % (quantityPerSecond / factor)).takeIf { it == 0 }
+                ?.let { buildRandomCustomer(false) }
+                ?: buildRandomCustomer(true)
+        }
 
     private fun buildRandomCustomer(correctCpf: Boolean) = CustomerModel(
         customerCode = UUID.randomUUID().toString(),
@@ -37,10 +47,4 @@ class ExecuteCustomerLoadTestImpl(
         customerDocument = generateCpf().takeIf { correctCpf } ?: "99999999999",
         customerMail = "email_cpf_$correctCpf@email.com"
     )
-
-    private fun getRandomFactor(current: Int, quantityPerSecond: Int, failurePercentage: Int): Boolean =
-        when (failurePercentage) {
-            0 -> true
-            else -> true.takeUnless { current % (quantityPerSecond / failurePercentage) == 0 } ?: false
-        }
 }
