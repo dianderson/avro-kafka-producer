@@ -11,10 +11,11 @@ import org.springframework.messaging.Message
 import org.springframework.messaging.support.MessageBuilder
 import org.springframework.stereotype.Component
 import java.time.LocalDate
+import java.util.concurrent.TimeUnit
 
 @Component
 class CustomerKafkaProducer(
-    private val kafkaConfigProperties: KafkaConfigProperties,
+    kafkaConfigProperties: KafkaConfigProperties,
     private val kafkaTemplate: KafkaTemplate<String, Any>
 ) : CustomerPublisher {
     private val logger = LogManager.getLogger(CustomerKafkaProducer::class.java)
@@ -42,6 +43,11 @@ class CustomerKafkaProducer(
         .build()
 
     private fun Message<CustomerAvro>.publicWithCallback() {
-        kafkaTemplate.send(this)
+        try {
+            kafkaTemplate.send(this).get(50, TimeUnit.MILLISECONDS)
+            logger.debug("Message posted: $this")
+        } catch (ex: Exception) {
+            logger.error("The message $this generated error $ex")
+        }
     }
 }
