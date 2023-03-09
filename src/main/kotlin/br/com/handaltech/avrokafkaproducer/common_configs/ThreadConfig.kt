@@ -1,4 +1,4 @@
-package br.com.handaltech.avrokafkaproducer.common_settings
+package br.com.handaltech.avrokafkaproducer.common_configs
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -8,7 +8,7 @@ import java.util.concurrent.Executor
 
 @EnableAsync
 @Configuration
-class ThreadsSettings {
+class ThreadConfig {
     @Bean
     fun taskExecutor(): Executor = ThreadPoolTaskExecutor()
         .apply { corePoolSize = 20 }
