@@ -3,7 +3,7 @@
 
 ## To run in terminal ##
 #### In the project directory ####
-    docker-compose run --build -d
+    docker-compose up --build -d
 
 #### To follow the logs ####
     docker logs --follow avro-kafka-producer-app
