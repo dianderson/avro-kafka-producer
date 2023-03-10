@@ -1,4 +1,4 @@
-package br.com.handaltech.avrokafkaproducer.common_configs
+package br.com.handaltech.avrokafkaproducer.common
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
