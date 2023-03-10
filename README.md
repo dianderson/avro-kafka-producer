@@ -31,7 +31,7 @@ Set active profiles to: local
 | quantity-per-second | Number of messages you want to send to kafka every second           |  
 | failure-percentage-per-second | Percentage of error messages you want to send to kafka every second |  
 
-##### In this case, the CPF will be generated correctly or wrong as on the percentage of failures seted on the parameter 'failure-percentage-per-second'
+##### In this case, the CPF will be generated correctly or wrong as on the percentage of failures set on the parameter 'failure-percentage-per-second'
 ###### CPF - It is a individual registration, unique number (ID), in Brazil
 
 The postman collection can be imported using a file found in the project folder
