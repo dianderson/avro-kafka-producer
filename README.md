@@ -1,4 +1,9 @@
-# avro-kafka-producer
+## Kafka message producer with avro serializer for load test
+## avro-kafka-producer
 
+## To run in terminal ##
+#### In the project directory ####
+    docker-compose run --build -d
 
-###  docker-compose up -d zookeeper kafka schema-registry control-center
+#### To follow the logs ####
+    docker logs --follow avro-kafka-producer-app
