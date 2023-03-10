@@ -33,3 +33,5 @@ Set active profiles to: local
 
 ##### In this case, the CPF will be generated correctly or wrong as on the percentage of failures seted on the parameter 'failure-percentage-per-second'
 ###### CPF - It is a individual registration, unique number (ID), in Brazil
+
+The postman collection can be imported using a file found in the project folder - *Kafka Producer.postman_collection.json*
