@@ -1,5 +1,5 @@
-## Kafka message producer with avro serializer for load test
-## avro-kafka-producer
+# avro-kafka-producer
+## _Kafka message producer with avro serializer for load test_
 
 ## To run in terminal ##
 #### In the project directory ####
