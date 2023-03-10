@@ -22,7 +22,7 @@ class LoadTestResource(
     fun customerLoadTest(
         @Valid @NotNull @Positive @RequestParam("message-quantity") messageQuantity: Int,
         @Valid @NotNull @Positive @RequestParam("quantity-per-second") quantityPerSecond: Int,
-        @Valid @NotNull @Max(50) @RequestParam("failure-percentage-on-second") failurePercentage: Int,
+        @Valid @NotNull @Max(50) @RequestParam("failure-percentage-per-second") failurePercentage: Int,
     ) {
         LoadTestRequest(
             messageQuantity = messageQuantity,

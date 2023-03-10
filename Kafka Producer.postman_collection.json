@@ -1,0 +1,43 @@
+{
+	"info": {
+		"_postman_id": "1574533d-8e0b-445d-91d9-e92525c882ff",
+		"name": "Kafka Producer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14104535"
+	},
+	"item": [
+		{
+			"name": "Start load test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/v1/load-tests/customers?message-quantity=1000&quantity-per-second=100&failure-percentage-on-second=0",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"v1",
+						"load-tests",
+						"customers"
+					],
+					"query": [
+						{
+							"key": "message-quantity",
+							"value": "1000"
+						},
+						{
+							"key": "quantity-per-second",
+							"value": "100"
+						},
+						{
+							"key": "failure-percentage-on-second",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
