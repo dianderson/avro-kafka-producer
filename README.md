@@ -35,4 +35,5 @@ Set active profiles to: local
 ###### CPF - It is a individual registration, unique number (ID), in Brazil
 
 The postman collection can be imported using a file found in the project folder
+
 *Kafka Producer.postman_collection.json*
