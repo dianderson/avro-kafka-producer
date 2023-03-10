@@ -11,14 +11,13 @@ import org.springframework.messaging.Message
 import org.springframework.messaging.support.MessageBuilder
 import org.springframework.stereotype.Component
 import java.time.LocalDate
-import java.util.concurrent.TimeUnit
 
 @Component
 class CustomerKafkaProducer(
     kafkaConfigProperties: KafkaConfigProperties,
     private val kafkaTemplate: KafkaTemplate<String, Any>
 ) : CustomerPublisher {
-    private val logger = LogManager.getLogger(CustomerKafkaProducer::class.java)
+    private val logger = LogManager.getLogger(CustomerKafkaProducer::class)
     private val topicConfig = kafkaConfigProperties.getTopicByName("customer")
     override fun publish(customerDataModel: CustomerDataModel) {
         customerDataModel.convertToAvro()
