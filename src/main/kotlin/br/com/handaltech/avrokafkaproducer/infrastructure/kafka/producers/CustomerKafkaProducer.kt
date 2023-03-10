@@ -45,7 +45,7 @@ class CustomerKafkaProducer(
     private fun Message<CustomerAvro>.publicWithCallback() {
         try {
             kafkaTemplate.send(this).get(50, TimeUnit.MILLISECONDS)
-            logger.debug("Message posted: $this")
+            logger.info("Message posted: $this")
         } catch (ex: Exception) {
             logger.error("The message $this generated error $ex")
         }
