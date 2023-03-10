@@ -12,7 +12,7 @@ import java.util.concurrent.Executor
 class ThreadsSettings : AsyncConfigurer {
     @Bean
     fun taskExecutor(): Executor = ThreadPoolTaskExecutor()
-        .apply { corePoolSize = 20 }
-        .apply { maxPoolSize = 50 }
+        .apply { corePoolSize = 50 }
+        .apply { maxPoolSize = 100 }
         .apply { initialize() }
 }
