@@ -12,7 +12,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "{{server}}/v1/load-tests/customers?message-quantity=1000&quantity-per-second=100&failure-percentage-on-second=0",
+					"raw": "{{server}}/v1/load-tests/customers?message-quantity=1000&quantity-per-second=100&failure-percentage-per-second=0",
 					"host": [
 						"{{server}}"
 					],
@@ -31,7 +31,7 @@
 							"value": "100"
 						},
 						{
-							"key": "failure-percentage-on-second",
+							"key": "failure-percentage-per-second",
 							"value": "0"
 						}
 					]
