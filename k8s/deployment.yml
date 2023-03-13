@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: avro-kafka-producer
+  labels:
+    app: avro-kafka-producer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: avro-kafka-producer
+  template:
+    metadata:
+      labels:
+        app: avro-kafka-producer
+    spec:
+      containers:
+        - name: avro-kafka-producer
+          image: diandersonmendonca/avro-kafka-producer:latest
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              cpu: 500m
+              memory: 60Mi
+            requests:
+              cpu: 500m
+              memory: 50Mi
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: docker
